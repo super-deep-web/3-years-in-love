@@ -20,10 +20,10 @@ export default function MotivosPage() {
             solo algunos de tantos
           </p>
           <h1 className="font-display mt-2 text-3xl font-medium text-ink sm:text-5xl">
-            Por qué te amo, {couple.partnerName}
+            {couple.partnerName} hermosa te amo
           </h1>
           <p className="mx-auto mt-3 max-w-md text-sm text-ink/70 sm:text-base">
-            Podría escribir muchos más, pero empecemos por estos.
+            Para tí, un par de videos llenos de amor.
           </p>
         </header>
 
