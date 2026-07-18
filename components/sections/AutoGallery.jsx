@@ -13,18 +13,25 @@ const SIZE_VARIANTS = [
 export default function AutoGallery({ images }) {
   const [selected, setSelected] = useState(null);
   const [closing, setClosing] = useState(false);
+  const [failed, setFailed] = useState([]);
 
   const sizedImages = useMemo(
     () =>
-      images.map((src) => ({
-        src,
-        sizeClass:
-          SIZE_VARIANTS[Math.floor(Math.random() * SIZE_VARIANTS.length)],
-      })),
-    [images],
+      images
+        .filter((src) => !failed.includes(src))
+        .map((src) => ({
+          src,
+          sizeClass:
+            SIZE_VARIANTS[Math.floor(Math.random() * SIZE_VARIANTS.length)],
+        })),
+    [images, failed],
   );
 
-  if (images.length === 0) return null;
+  const handleImageError = (src) => {
+    setFailed((prev) => (prev.includes(src) ? prev : [...prev, src]));
+  };
+
+  if (sizedImages.length === 0) return null;
 
   const openImage = (src) => {
     setClosing(false);
@@ -58,6 +65,7 @@ export default function AutoGallery({ images }) {
               src={src}
               alt="Foto de nuestros recuerdos"
               loading="lazy"
+              onError={() => handleImageError(src)}
               className={`block w-full object-cover transition-transform duration-300 group-hover:scale-105 ${sizeClass}`}
             />
           </button>

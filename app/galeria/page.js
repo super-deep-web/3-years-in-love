@@ -32,6 +32,7 @@ function getGalleryImages() {
   }
 
   const filtered = files
+    .filter((file) => !file.startsWith('.'))
     .filter((file) => IMAGE_EXTENSIONS.includes(path.extname(file).toLowerCase()))
     .filter((file) => !EXCLUDED_IMAGES.includes(file))
     .map((file) => `/images/${file}`);
