@@ -17,7 +17,7 @@ export default function MotivosPage() {
 
         <header className="mb-8 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-coral">
-            solo algunos de tantos
+            Felices 3 añitos
           </p>
           <h1 className="font-display mt-2 text-3xl font-medium text-ink sm:text-5xl">
             {couple.partnerName} hermosa te amo
