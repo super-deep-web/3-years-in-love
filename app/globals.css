@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6ebdc;
+  color: #241c18;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* Espacio reservado para el navbar inferior + safe-area de iPhone/Android con gestos */
+.pb-safe-nav {
+  padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
+}
+
+.nav-safe-area {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Utilidad de vidrio esmerilado reutilizable */
+.glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Foco de teclado visible, accesible */
+:focus-visible {
+  outline: 2px solid #e77749;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbar sutil (opcional, no invasivo) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f6ebdc;
+}
+::-webkit-scrollbar-thumb {
+  background: #dd946d;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
